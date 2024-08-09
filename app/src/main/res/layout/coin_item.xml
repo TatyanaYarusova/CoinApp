@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="@dimen/padding_s"
+    >
     
     <ImageView
         android:id="@+id/image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/img_size"
+        android:layout_height="@dimen/img_size"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +24,12 @@
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent"
 
-        tools:text="Bitcoin"
+        android:layout_marginStart="@dimen/margin_s"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/name_text_size"
+        android:textColor="@color/name_text"
+
+        tools:text="@string/tools_name_coin"
         />
 
     <TextView
@@ -33,7 +40,12 @@
         app:layout_constraintTop_toBottomOf="@+id/text_name"
         app:layout_constraintStart_toEndOf="@+id/image"
 
-        tools:text="Bitcoin"
+        android:layout_marginStart="@dimen/margin_s"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/symbol_text_size"
+        android:textColor="@color/symbol_text"
+
+        tools:text="@string/tools_symbol_coin"
         />
 
     <TextView
@@ -44,7 +56,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        tools:text="Bitcoin"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/price_text_size"
+        android:textColor="@color/price_text"
+
+        tools:text="@string/tools_price_coin"
         />
 
     <TextView
@@ -55,7 +71,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_price"
 
-        tools:text="Bitcoin"
+        android:layout_marginStart="@dimen/margin_s"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/percent_text_size"
+        android:textColor="@color/plus_percent_text"
+
+        tools:text="@string/tools_percent_coin"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

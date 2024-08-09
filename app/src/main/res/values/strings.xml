@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">CoinApp</string>
+    <!--    main toolbar    -->
     <string name="title_main_screen">Список криптовалют</string>
+    <string name="text_button_usd">USD</string>
+    <string name="text_button_rub">RUB</string>
+
+    <!--    error state -->
+    <string name="network_error">Произошла ошибка подключения к Интернету :( \n Попробуем снова?</string>
+    <string name="server_error">Произошла какая-то ошибка :( \n Попробуем снова?</string>
+    <string name="error_button_text">ПОПРОБОВАТЬ</string>
+
+    <!--    coin item   -->
+    <string name="tools_name_coin">Bitcoin</string>
+    <string name="tools_symbol_coin">BTC</string>
+    <string name="tools_price_coin">$ 28,560.95</string>
+    <string name="tools_percent_coin">+ 4.05%</string>
+
+    <!--    details screen  -->
     <string name="text_description_title">Описание</string>
     <string name="text_category_title">Категории</string>
 </resources>

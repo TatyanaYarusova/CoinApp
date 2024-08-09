@@ -15,14 +15,32 @@
 
     <TextView
         android:id="@+id/text_error"
-        tools:text="Произошла какая-то ошибка :( \n Попробуем снова?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+
+        android:layout_marginTop="@dimen/margin_sm"
+        android:layout_marginHorizontal="@dimen/margin_m"
+
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/error_text_size"
+
+        android:text="@string/server_error"
+        />
 
     <Button
         android:id="@+id/reloading_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Попробовать" />
+        android:text="@string/error_button_text"
+
+        android:background="@drawable/error_button"
+        android:theme="@style/Button.color"
+        android:layout_marginTop="@dimen/margin_ml"
+        android:paddingHorizontal="@dimen/padding_h_button"
+
+        android:textSize="@dimen/error_button_text_size"
+        android:fontFamily="@font/roboto_regular"
+        />
 </LinearLayout>
