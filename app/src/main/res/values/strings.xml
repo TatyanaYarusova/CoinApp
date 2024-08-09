@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">CoinApp</string>
     <string name="title_main_screen">Список криптовалют</string>
+    <string name="text_description_title">Описание</string>
+    <string name="text_category_title">Категории</string>
 </resources>

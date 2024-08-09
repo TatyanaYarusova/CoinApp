@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.coinapp.di.annotation.AppScope
 import com.example.coinapp.di.module.DataModule
 import com.example.coinapp.di.module.ViewModelModule
+import com.example.coinapp.ui.DetailsFragment
 import com.example.coinapp.ui.MainFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -26,4 +27,6 @@ interface CoinAppComponent {
     }
 
     fun inject(fragment: MainFragment)
+
+    fun inject(fragment: DetailsFragment)
 }
