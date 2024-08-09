@@ -13,7 +13,7 @@ interface ApiService {
     @GET("coins/markets")
     suspend fun getCoinList(
         @Header(HEADER) key: String = KEY,
-        @Query(QUERY_PARAM_VS_CURRENCY) vsCurrency: String = DEFAULT_CURRENCY,
+        @Query(QUERY_PARAM_VS_CURRENCY) vsCurrency: String,
         @Query(QUERY_PARAM_COUNT) count: Int = COUNT
     ): Response<List<CoinDto>>
 
@@ -29,7 +29,6 @@ interface ApiService {
         private const val QUERY_PARAM_COUNT = "per_page"
 
         private const val COUNT = 20
-        private const val DEFAULT_CURRENCY = "USD"
 
         private const val HEADER = "x-cg-demo-api-key"
         private const val KEY = "CG-dmDVmGUG9qgxxRbRfHNHGJBo"

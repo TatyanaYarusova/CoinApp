@@ -23,9 +23,21 @@ class MainViewModel @Inject constructor(
 
 
     init {
+        load()
+    }
+
+    private fun handleError(errorType: RequestError) {
+        _state.value = when (errorType) {
+            is RequestError.NetworkError -> ScreenState.Error(ErrorEvent.NetworkError)
+            is RequestError.ServerError -> ScreenState.Error(ErrorEvent.ServerError)
+        }
+    }
+
+    fun load(currency: String = DEFAULT_CURRENCY) {
+        _state.value = ScreenState.Loading
         viewModelScope.launch {
             try {
-                when(val coinList = getCoinList()) {
+                when(val coinList = getCoinList(currency)) {
                     is RequestResult.Success -> _state.value = ScreenState.Content(coinList.content)
                     is RequestResult.Error -> handleError(coinList.requestError)
                 }
@@ -35,10 +47,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun handleError(errorType: RequestError) {
-        _state.value = when (errorType) {
-            is RequestError.NetworkError -> ScreenState.Error(ErrorEvent.NetworkError)
-            is RequestError.ServerError -> ScreenState.Error(ErrorEvent.ServerError)
-        }
+    companion object {
+        private const val DEFAULT_CURRENCY = "USD"
     }
 }

@@ -32,7 +32,6 @@
         android:layout_marginTop="@dimen/margin_m"
         android:layout_marginStart="@dimen/margin_m"
 
-        android:backgroundTint="@color/active_button_bg"
 
         android:text="@string/text_button_usd"
         android:textSize="@dimen/button_text_size"
@@ -50,8 +49,6 @@
         app:layout_constraintStart_toEndOf="@+id/button_usd"
         android:layout_marginTop="@dimen/margin_m"
         android:layout_marginStart="@dimen/margin_s"
-
-        android:backgroundTint="@color/inactive_button_bg"
 
         android:text="@string/text_button_rub"
         android:textSize="@dimen/button_text_size"
