@@ -73,7 +73,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun initToolBar() {
-        binding.toolbar.title.text = coinId
+        binding.toolbar.title.text = coinId.replaceFirstChar { it.uppercase() }
 
         binding.toolbar.buttonBack.setOnClickListener {
 

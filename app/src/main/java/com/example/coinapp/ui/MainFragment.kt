@@ -26,9 +26,13 @@ class MainFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
+
+    @Inject
+    lateinit var adapter: CoinAdapter
 
     private val component by lazy {
         (requireActivity().application as CoinApp).component
@@ -81,8 +85,6 @@ class MainFragment : Fragment() {
         binding.loadingContainer.root.visibility = View.GONE
         binding.errorContainer.root.visibility = View.GONE
 
-
-        val adapter = CoinAdapter()
         adapter.onCoinClickListener = object : CoinAdapter.OnCoinClickListener {
             override fun onCoinClick(coin: Coin) {
                 addFragment(DetailsFragment.newInstance(coin.id))
