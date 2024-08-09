@@ -76,7 +76,7 @@ class DetailsFragment : Fragment() {
         binding.toolbar.title.text = coinId.replaceFirstChar { it.uppercase() }
 
         binding.toolbar.buttonBack.setOnClickListener {
-
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
     private fun observeViewModel() {
