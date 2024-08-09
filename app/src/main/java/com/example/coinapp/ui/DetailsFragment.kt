@@ -2,13 +2,13 @@ package com.example.coinapp.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.coinapp.CoinApp
+import com.example.coinapp.R
 import com.example.coinapp.databinding.FragmentDetailsBinding
 import com.example.coinapp.domain.entity.CoinDetails
 import com.example.coinapp.presentation.DetailsViewModel
@@ -92,7 +92,6 @@ class DetailsFragment : Fragment() {
     }
 
     private fun renderContent(content: CoinDetails) {
-        Log.d("Tag", content.toString())
         binding.loadingContainer.root.visibility = View.GONE
         binding.errorContainer.root.visibility = View.GONE
         binding.contentContainer.visibility = View.VISIBLE
@@ -115,6 +114,17 @@ class DetailsFragment : Fragment() {
         binding.errorContainer.root.visibility = View.VISIBLE
         binding.loadingContainer.root.visibility = View.GONE
         binding.contentContainer.visibility = View.GONE
+
+        when (errorType) {
+            is ErrorEvent.ServerError -> binding.errorContainer.textError.text =
+                getString(R.string.server_error)
+            is ErrorEvent.NetworkError -> binding.errorContainer.textError.text =
+                getString(R.string.network_error)
+        }
+
+        binding.errorContainer.reloadingButton.setOnClickListener {
+            viewModel.getDetails(coinId)
+        }
     }
 
 

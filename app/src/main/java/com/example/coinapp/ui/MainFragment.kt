@@ -76,7 +76,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initToolBar() {
-        if(activeCurrency == CURRENCY_USD){
+        if (activeCurrency == CURRENCY_USD) {
             renderActiveButton(binding.toolbar.buttonUsd)
             renderInactiveButton(binding.toolbar.buttonRub)
         } else {
@@ -85,7 +85,7 @@ class MainFragment : Fragment() {
         }
 
         binding.toolbar.buttonUsd.setOnClickListener {
-           clickOnUsdButton()
+            clickOnUsdButton()
         }
 
         binding.toolbar.buttonRub.setOnClickListener {
@@ -94,27 +94,30 @@ class MainFragment : Fragment() {
 
     }
 
-    private fun clickOnUsdButton(){
+    private fun clickOnUsdButton() {
         viewModel.load(CURRENCY_USD)
         activeCurrency = CURRENCY_USD
         renderActiveButton(binding.toolbar.buttonUsd)
         renderInactiveButton(binding.toolbar.buttonRub)
     }
 
-    private fun clickOnRubButton(){
+    private fun clickOnRubButton() {
         viewModel.load(CURRENCY_RUB)
         activeCurrency = CURRENCY_RUB
         renderActiveButton(binding.toolbar.buttonRub)
         renderInactiveButton(binding.toolbar.buttonUsd)
     }
 
-    private fun renderActiveButton(button: Button){
+    private fun renderActiveButton(button: Button) {
         button.setTextColor(getColor(requireContext(), R.color.active_button_text))
-        button.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.active_button_bg)
+        button.backgroundTintList =
+            ContextCompat.getColorStateList(requireContext(), R.color.active_button_bg)
     }
-    private fun renderInactiveButton(button: Button){
+
+    private fun renderInactiveButton(button: Button) {
         button.setTextColor(getColor(requireContext(), R.color.inactive_button_text))
-        button.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.inactive_button_bg)
+        button.backgroundTintList =
+            ContextCompat.getColorStateList(requireContext(), R.color.inactive_button_bg)
     }
 
     private fun renderState(state: ScreenState<List<Coin>>) {
@@ -149,6 +152,17 @@ class MainFragment : Fragment() {
         binding.errorContainer.root.visibility = View.VISIBLE
         binding.loadingContainer.root.visibility = View.GONE
         binding.rv.visibility = View.GONE
+
+        when (errorType) {
+            is ErrorEvent.ServerError -> binding.errorContainer.textError.text =
+                getString(R.string.server_error)
+            is ErrorEvent.NetworkError -> binding.errorContainer.textError.text =
+                getString(R.string.network_error)
+        }
+
+        binding.errorContainer.reloadingButton.setOnClickListener {
+            viewModel.load(activeCurrency)
+        }
     }
 
     private fun addFragment(fragment: Fragment) {
@@ -157,7 +171,6 @@ class MainFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
-
 
 
     override fun onDestroy() {
