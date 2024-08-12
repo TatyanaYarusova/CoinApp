@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.coinapp.R
 import com.example.coinapp.databinding.CoinItemBinding
 import com.example.coinapp.domain.entity.Coin
+import com.example.coinapp.utils.formatNumber
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -37,18 +38,18 @@ class CoinAdapter @Inject constructor(
             textPrice.text = String.format(
                 app.resources.getString(R.string.format_price),
                 symbol,
-                coin.price.toString()
+                coin.price.formatNumber()
             )
             if (coin.percent > 0) {
                 textPercent.text = String.format(
                     app.resources.getString(R.string.plus_percent_coin),
-                    coin.percent.toString()
+                    coin.percent.formatNumber()
                 )
                 textPercent.setTextColor(getColor(app.applicationContext, R.color.plus_percent_text))
             } else {
                 textPercent.text = String.format(
                     app.resources.getString(R.string.minus_percent_coin),
-                    coin.percent.toString()
+                    coin.percent.formatNumber()
                 )
                 textPercent.setTextColor(getColor(app.applicationContext, R.color.minus_percent_text))
             }
