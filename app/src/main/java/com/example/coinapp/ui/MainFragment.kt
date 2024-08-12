@@ -95,6 +95,7 @@ class MainFragment : Fragment() {
     }
 
     private fun clickOnUsdButton() {
+        adapter.changeCurrency(CURRENCY_USD)
         viewModel.load(CURRENCY_USD)
         activeCurrency = CURRENCY_USD
         renderActiveButton(binding.toolbar.buttonUsd)
@@ -102,6 +103,7 @@ class MainFragment : Fragment() {
     }
 
     private fun clickOnRubButton() {
+        adapter.changeCurrency(CURRENCY_RUB)
         viewModel.load(CURRENCY_RUB)
         activeCurrency = CURRENCY_RUB
         renderActiveButton(binding.toolbar.buttonRub)
@@ -137,6 +139,7 @@ class MainFragment : Fragment() {
                 addFragment(DetailsFragment.newInstance(coin.id))
             }
         }
+        adapter.changeCurrency(activeCurrency)
         binding.rv.adapter = adapter
         adapter.submitList(content)
         binding.rv.visibility = View.VISIBLE

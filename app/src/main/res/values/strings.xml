@@ -17,6 +17,9 @@
     <string name="tools_percent_coin">+ 4.05%</string>
     <string name="plus_percent_coin">+ %s %%</string>
     <string name="minus_percent_coin">%s %%</string>
+    <string name="symbol_rub">₽</string>
+    <string name="symbol_usd">$</string>
+    <string name="format_price">%s %s</string>
 
     <!--    details screen  -->
     <string name="text_description_title">Описание</string>

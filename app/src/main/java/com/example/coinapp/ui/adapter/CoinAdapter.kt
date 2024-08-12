@@ -4,6 +4,7 @@ import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.ListAdapter
 import com.example.coinapp.R
 import com.example.coinapp.databinding.CoinItemBinding
@@ -12,7 +13,8 @@ import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
 class CoinAdapter @Inject constructor(
-    private val app: Application
+    private val app: Application,
+    private var currency: String = CURRENCY_USD
 ) : ListAdapter<Coin, CoinViewHolder>(CoinDiffCallback) {
 
     var onCoinClickListener: OnCoinClickListener? = null
@@ -28,7 +30,15 @@ class CoinAdapter @Inject constructor(
             Picasso.get().load(coin.icon).into(image)
             textName.text = coin.name
             textSymbol.text = coin.symbol.uppercase()
-            textPrice.text = coin.price.toString()
+            var symbol = getString(app.applicationContext, R.string.symbol_usd)
+            if(currency == CURRENCY_RUB) {
+                symbol = getString(app.applicationContext, R.string.symbol_rub)
+            }
+            textPrice.text = String.format(
+                app.resources.getString(R.string.format_price),
+                symbol,
+                coin.price.toString()
+            )
             if (coin.percent > 0) {
                 textPercent.text = String.format(
                     app.resources.getString(R.string.plus_percent_coin),
@@ -49,7 +59,16 @@ class CoinAdapter @Inject constructor(
         }
     }
 
+    fun changeCurrency(newCurrency: String) {
+        currency = newCurrency
+    }
+
     interface OnCoinClickListener {
         fun onCoinClick(coin: Coin)
+    }
+
+    companion object {
+        private const val CURRENCY_USD = "USD"
+        private const val CURRENCY_RUB = "RUB"
     }
 }
