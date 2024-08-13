@@ -67,4 +67,16 @@ dependencies {
 
     //Pull to Refresh
     implementation(libs.pull.to.refresh)
+
+    //Test junit
+    testImplementation(libs.junit.api)
+    testImplementation(libs.junit.params)
+    testRuntimeOnly(libs.junit.engine)
+
+    //Mockito
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.jupiter)
+
+    //Coroutine test
+    testImplementation(libs.coroutines.test)
 }
