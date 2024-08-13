@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.CoinApp" parent="Base.Theme.CoinApp" />
+
+    <style name="Button.color" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/error_button</item>
+    </style>
 </resources>
