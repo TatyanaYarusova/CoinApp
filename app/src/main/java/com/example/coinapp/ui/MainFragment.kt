@@ -133,7 +133,11 @@ class MainFragment : Fragment() {
     private fun renderContent(content: List<Coin>) {
         binding.loadingContainer.root.visibility = View.GONE
         binding.errorContainer.root.visibility = View.GONE
+        initRV(content)
+        initRefresh()
+    }
 
+    private fun initRV(content: List<Coin>) {
         adapter.onCoinClickListener = object : CoinAdapter.OnCoinClickListener {
             override fun onCoinClick(coin: Coin) {
                 addFragment(DetailsFragment.newInstance(coin.id))
@@ -145,16 +149,26 @@ class MainFragment : Fragment() {
         binding.rv.visibility = View.VISIBLE
     }
 
+    private fun initRefresh() {
+        binding.swipeRefreshLayout.visibility = View.VISIBLE
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.load(activeCurrency)
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
     private fun renderLoading() {
         binding.loadingContainer.root.visibility = View.VISIBLE
         binding.errorContainer.root.visibility = View.GONE
         binding.rv.visibility = View.GONE
+        binding.swipeRefreshLayout.visibility = View.GONE
     }
 
     private fun renderError(errorType: ErrorEvent) {
         binding.errorContainer.root.visibility = View.VISIBLE
         binding.loadingContainer.root.visibility = View.GONE
         binding.rv.visibility = View.GONE
+        binding.swipeRefreshLayout.visibility = View.GONE
 
         when (errorType) {
             is ErrorEvent.ServerError -> binding.errorContainer.textError.text =
