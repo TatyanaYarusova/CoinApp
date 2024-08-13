@@ -64,4 +64,7 @@ dependencies {
 
     //Picasso
     implementation (libs.picasso)
+
+    //Pull to Refresh
+    implementation(libs.pull.to.refresh)
 }
