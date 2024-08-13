@@ -6,8 +6,8 @@
     <string name="text_button_rub">RUB</string>
 
     <!--    error state -->
-    <string name="network_error">Произошла ошибка подключения к Интернету :( \n Попробуем снова?</string>
-    <string name="server_error">Произошла какая-то ошибка :( \n Попробуем снова?</string>
+    <string name="network_error">Произошла ошибка подключения к Интернету:( \n Попробуем снова?</string>
+    <string name="server_error">Произошла какая-то ошибка:( \n Попробуем снова?</string>
     <string name="error_button_text">ПОПРОБОВАТЬ</string>
 
     <!--    coin item   -->
